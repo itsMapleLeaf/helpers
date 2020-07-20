@@ -1,9 +1,11 @@
-export function memoize<K, V>(fn: (key: K) => V) {
+export function memoize<K, V, Args extends unknown[]>(
+  fn: (key: K, ...args: Args) => V,
+) {
   const values = new Map<K, V>()
 
-  return function getMemoizedValue(key: K) {
+  return function getMemoizedValue(key: K, ...args: Args) {
     if (values.has(key)) return values.get(key) as V
-    const value = fn(key)
+    const value = fn(key, ...args)
     values.set(key, value)
     return value
   }
