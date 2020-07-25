@@ -5,7 +5,7 @@ export function range(min: number, max?: number) {
   }
 
   const length = max - min
-  const result = Array(length)
+  const result = Array<number>(length)
 
   for (let i = 0; i < length; i++) {
     result[i] = i + min
