@@ -1,13 +1,25 @@
+/* eslint-disable */
 /**
  * Automatically binds the `this` of the functions in an object to that object,
  * which allows using class methods in a pointfree manner
  */
-export function autobind(obj: object) {
-  for (const [key, value] of Object.entries(obj)) {
-    if (typeof value === "function") {
-      /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
-      // @ts-expect-error
-      obj[key] = value.bind(obj)
+export function autobind(instance: any) {
+  const names = Object.getOwnPropertyNames(instance.__proto__)
+  for (const memberName of names) {
+    // skip getters/setters
+    const descriptor = Object.getOwnPropertyDescriptor(
+      instance.__proto__,
+      memberName,
+    )
+    if (descriptor?.get || descriptor?.set) {
+      continue
+    }
+
+    if (
+      typeof instance[memberName] === "function" &&
+      memberName !== "constructor"
+    ) {
+      instance[memberName] = instance[memberName].bind(instance)
     }
   }
 }
