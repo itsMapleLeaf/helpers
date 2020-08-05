@@ -1,4 +1,4 @@
-export const concatUniq = <T>(value: T) => (items: Iterable<T>) => [
-  ...items,
-  value,
-]
+import { unique } from "./unique"
+
+export const concatUnique = <T>(value: T) => (items: Iterable<T>) =>
+  unique([...items, value])
