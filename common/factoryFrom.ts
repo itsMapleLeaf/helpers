@@ -3,7 +3,7 @@
  * @param cls
  */
 export function factoryFrom<A extends unknown[], T>(
-  cls: new (...args: A) => T,
+	cls: new (...args: A) => T,
 ) {
-  return (...args: A) => new cls(...args)
+	return (...args: A) => new cls(...args)
 }

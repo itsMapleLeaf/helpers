@@ -1,4 +1,4 @@
 export const safeIndex = <T>(
-  items: ArrayLike<T>,
-  index: number,
+	items: ArrayLike<T>,
+	index: number,
 ): T | undefined => items[index]

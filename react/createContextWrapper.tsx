@@ -10,25 +10,25 @@ const missingValue = Symbol()
  * @param resolveMissing Use this to return a default value if the provider is missing, or throw an error
  */
 function createContextWrapper<R, I extends object>(
-  hook: (init: I) => R,
-  resolveMissing: () => R = () => raise("Missing context provider"),
+	hook: (init: I) => R,
+	resolveMissing: () => R = () => raise("Missing context provider"),
 ) {
-  const Context = React.createContext<R | typeof missingValue>(missingValue)
+	const Context = React.createContext<R | typeof missingValue>(missingValue)
 
-  function Provider(props: I & { children: React.ReactNode }) {
-    const context = hook(props)
-    return <Context.Provider value={context}>{props.children}</Context.Provider>
-  }
+	function Provider(props: I & { children: React.ReactNode }) {
+		const context = hook(props)
+		return <Context.Provider value={context}>{props.children}</Context.Provider>
+	}
 
-  function useWrappedContext() {
-    const context = useContext(Context)
-    return context === missingValue ? resolveMissing() : context
-  }
+	function useWrappedContext() {
+		const context = useContext(Context)
+		return context === missingValue ? resolveMissing() : context
+	}
 
-  useWrappedContext.Provider = Provider
-  useWrappedContext.Context = Context
+	useWrappedContext.Provider = Provider
+	useWrappedContext.Context = Context
 
-  return useWrappedContext
+	return useWrappedContext
 }
 
 export default createContextWrapper
