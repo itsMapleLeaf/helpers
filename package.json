@@ -1,7 +1,8 @@
 {
-  "name": "helpers",
-  "version": "1.0.0",
-  "author": "kingdaro",
+  "name": "@itsmapleleaf/helpers",
+  "description": "a mixed bag of helpful helper functions",
+  "version": "0.0.0",
+  "author": "itsMapleLeaf",
   "license": "MIT",
   "type": "module",
   "exports": {
