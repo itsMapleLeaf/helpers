@@ -54,7 +54,18 @@
   "eslintConfig": {
     "extends": [
       "./node_modules/@itsmapleleaf/configs/eslint"
-    ]
+    ],
+    "rules": {
+      "unicorn/prevent-abbreviations": [
+        "warn",
+        {
+          "replacements": {
+            "args": false,
+            "ref": false
+          }
+        }
+      ]
+    }
   },
   "prettier": "@itsmapleleaf/configs/prettier",
   "ava": {

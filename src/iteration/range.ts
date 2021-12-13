@@ -1,15 +1,15 @@
 export function range(min: number, max?: number) {
-	if (max === undefined) {
-		max = min
-		min = 0
-	}
+  if (max === undefined) {
+    max = min
+    min = 0
+  }
 
-	const length = max - min
-	const result = Array<number>(length)
+  const length = max - min
+  const result = Array.from({ length })
 
-	for (let i = 0; i < length; i++) {
-		result[i] = i + min
-	}
+  for (let index = 0; index < length; index++) {
+    result[index] = index + min
+  }
 
-	return result
+  return result
 }
