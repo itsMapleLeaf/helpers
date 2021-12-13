@@ -1,2 +1,5 @@
 /node_modules
 .vscode
+dist
+# this is generated
+src/main.ts 
