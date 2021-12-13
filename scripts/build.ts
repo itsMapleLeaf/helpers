@@ -3,7 +3,7 @@ import { writeFile } from "node:fs/promises"
 import { posix } from "node:path"
 import { fileURLToPath } from "node:url"
 import { build } from "tsup"
-import { getProjectRoot } from "../src/main.js"
+import { getProjectRoot } from "../src/fs/get-project-root.js"
 
 const projectRoot =
   (await getProjectRoot(posix.dirname(fileURLToPath(import.meta.url)))) ??
